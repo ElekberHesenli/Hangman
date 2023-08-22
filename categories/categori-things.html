@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Adam Asmaca</title>
+</head>
+
+<body>
+    <h1>Adam Asmaca</h1>
+    <p>Gizli sözü tapmaq üçün hərf daxil edin.</p>
+
+    <div class="container">
+        <svg height="250" width="250" class="grafik">
+            <!-- sehpa -->
+            <line x1="50" y1="20" x2="130" y2="20" />
+            <line x1="50" y1="50" x2="80" y2="20" />
+            <line x1="130" y1="20" x2="130" y2="50" />
+            <line x1="50" y1="20" x2="50" y2="250" />
+            <line x1="10" y1="250" x2="90" y2="250" stroke-width="7" />
+
+            <!-- kafa -->
+            <circle cx="130" cy="70" r="20" class="item" />
+
+            <!-- sol göz -->
+            <circle cx="125" cy="65" r="1" fill="black" class="item" />
+
+            <!-- sağ göz -->
+            <circle cx="135" cy="65" r="1" fill="black" class="item" />
+
+            <!-- gövde -->
+            <line x1="130" y1="90" x2="130" y2="170" class="item" />
+
+            <!-- kollar -->
+            <line x1="130" y1="120" x2="100" y2="100" class="item" />
+            <line x1="130" y1="120" x2="160" y2="100" class="item" />
+
+            <!-- bacaklar -->
+            <line x1="130" y1="170" x2="100" y2="190" class="item" />
+            <line x1="130" y1="170" x2="160" y2="190" class="item" />
+
+            <!-- ağız -->
+            <path d="M120 80 Q130 70 140 80" fill="none" stroke="black" class="item" />
+        </svg>
+
+        <div id="wrong-letters">
+
+        </div>
+
+        <div id="word">
+
+        </div>
+    </div>
+    <div id="categori">
+        <h2 class="categoriname">Kateqoriya:Əşyalar</h2>
+        <div id="score">
+            Score: <span id="score-value">0</span>
+        </div>
+    </div>
+    <div id="popup-container">
+        <div class="popup">
+            <h2 id="success-message">Qazandız,Təbriklər</h2>
+            <button id="play-again">Təkrar oyna</button>
+        </div>
+    </div>
+    <div id="letter-buttons">
+        <button class="letter-button">Q</button>
+        <button class="letter-button">W</button>
+        <button class="letter-button">E</button>
+        <button class="letter-button">R</button>
+        <button class="letter-button">T</button>
+        <button class="letter-button">Y</button>
+        <button class="letter-button">U</button>
+        <button class="letter-button">İ</button>
+        <button class="letter-button">O</button>
+        <button class="letter-button">P</button>
+        <button class="letter-button">Ö</button>
+        <button class="letter-button">Ğ</button>
+        <button class="letter-button">A</button>
+        <button class="letter-button">S</button>
+        <button class="letter-button">D</button>
+        <button class="letter-button">F</button>
+        <button class="letter-button">G</button>
+        <button class="letter-button">H</button>
+        <button class="letter-button">J</button>
+        <button class="letter-button">K</button>
+        <button class="letter-button">L</button>
+        <button class="letter-button">I</button>
+        <button class="letter-button">Ə</button>
+        <button class="letter-button">Z</button>
+        <button class="letter-button">X</button>
+        <button class="letter-button">C</button>
+        <button class="letter-button">V</button>
+        <button class="letter-button">B</button>
+        <button class="letter-button">N</button>
+        <button class="letter-button">M</button>
+        <button class="letter-button">Ç</button>
+        <button class="letter-button">Ş</button>
+        <button class="letter-button">Ü</button>
+    </div>
+    <!-- <div id="message" class="">
+        <p>Siz artıq bu hərfi daxil etmisiz.</p>
+    </div> -->
+
+    <script>
+        const word_el = document.getElementById('word');
+        const popupcontainer = document.getElementById('popup-container');
+        const popup = document.querySelector('.popup');
+        const message_el = document.getElementById('success-message');
+        const wrongLetters_el = document.getElementById('wrong-letters');
+        const items = document.querySelectorAll('.item');
+        const message = document.getElementById('message');
+        const PlayAgainBtn = document.getElementById('play-again');
+
+        const score_el = document.getElementById('score-value');
+        let score = 0;
+
+        function increaseScore() {
+            score++;
+            score_el.textContent = score;
+        }
+        function reduceScore() {
+            score--;
+            score_el.textContent = score;
+        }
+
+        const correctLetters = [];
+        const wrongLetters = [];
+        let selectedWord = getRandomWord();
+
+        function getRandomWord() {
+            const words = ["QƏLƏM", "KAĞIZ", "TELEFON", "KOMPÜTER", "KİTAB", "EYNƏK", "ÇANTA", "STOL", "QAPI", "QIZIL", "KAMERA", "DƏMİR", "QƏFƏS", "PALTAR", "QAZAN", "GÜLDAN", "QULAQCIQ", "OYUNCAQ", "TELEVİZOR", "KƏRPİC",];
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        function displayWord() {
+            word_el.innerHTML = `
+        ${selectedWord.split('').map(letter => `
+            <div class="letter">
+                ${correctLetters.includes(letter) ? letter : ''}
+            </div>
+        `).join('')}    
+    `;
+
+            const w = word_el.innerText.replace(/\n/g, '');
+            if (w === selectedWord) {
+                popupcontainer.style.display = 'flex';
+                message_el.innerText = 'Qazandız,Təbriklər.';
+                popup.style.backgroundColor = 'green';
+                increaseScore();
+            }
+        }
+
+        function updateWrongLetters() {
+            wrongLetters_el.innerHTML = `
+        ${wrongLetters.length > 0 ? '<h3>Səhv daxil edilmiş hərflər</h3>' : ''}
+        ${wrongLetters.map(letter => `<span>${letter}<span>`)}
+    `;
+
+            items.forEach((item, index) => {
+                const errorCount = wrongLetters.length;
+
+                if (index < errorCount) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            })
+
+            if (wrongLetters.length === items.length) {
+                popupcontainer.style.display = 'flex';
+
+                message_el.innerText = `Təəssüf ki məğlub oldunuz 
+                Doğru cavab:${selectedWord}`;
+                popup.style.backgroundColor = 'red';
+                reduceScore()
+            }
+        }
+
+        function displayMessage() {
+            message.classList.add('show');
+
+            setTimeout(function () {
+                message.classList.remove('show');
+            }, 2000);
+        }
+
+        PlayAgainBtn.addEventListener('click', function () {
+            correctLetters.splice(0);
+            wrongLetters.splice(0);
+
+            selectedWord = getRandomWord();
+            displayWord();
+            updateWrongLetters();
+
+            letterButtons.forEach(button => {
+                button.disabled = false;
+            });
+
+            popupcontainer.style.display = 'none';
+        });
+
+        // window.addEventListener('keydown', function (e) {
+        //     if (e.keyCode >= 65 && e.keyCode <= 90) {
+        //         const letter = e.key;
+
+        //         if (selectedWord.includes(letter)) {
+        //             if (!correctLetters.includes(letter)) {
+        //                 correctLetters.push(letter);
+        displayWord();
+        //             } else {
+        //                 displayMessage();
+        //             }
+        //         } else {
+        //             if (!wrongLetters.includes(letter)) {
+        //                 wrongLetters.push(letter);
+        //                 updateWrongLetters();
+        //             }
+        //             else {
+        //                 displayMessage();
+        //             }
+        //         }
+        //     }
+        // });
+
+        // displayWord()
+        const letterButtons = document.querySelectorAll('.letter-button');
+
+        letterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const letter = button.innerText;
+
+                if (selectedWord.includes(letter)) {
+                    if (!correctLetters.includes(letter)) {
+                        correctLetters.push(letter);
+                        displayWord();
+                    } else {
+                        displayMessage("Bu harfi zaten seçtiniz.");
+                    }
+                } else {
+                    if (!wrongLetters.includes(letter)) {
+                        wrongLetters.push(letter);
+                        updateWrongLetters();
+                    } else {
+                        displayMessage("Bu harfi zaten seçtiniz.");
+                    }
+                }
+
+                // Harf düğmesini devre dışı bırak
+                button.disabled = true;
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kategori Sayfası</title>
+</head>
+
+<body>
+    <h1>Kateqoriyanı seç və oyuna başlayaq </h1>
+    <main>
+        <div class="container">
+            <div class="box" onclick="goToPage('../categories/categori-animals.html')">
+                Heyvanlar
+                <img src="../images/animals.jpg" alt="">
+            </div>
+            <div class="box" onclick="goToPage('../categories/categori-fruits.html')">
+                Meyvələr
+                <img src="../images/fruits.jpg" alt="">
+            </div>
+            <div class="box" onclick="goToPage('../categories/categori-jobs.html')">
+                Peşələr
+                <img src="../images/jobs.jpg" alt="">
+            </div>
+            <div class="box" onclick="goToPage('../categories/categori-things.html')">
+                Əşyalar
+                <img src="../images/things.jpg" alt="">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function goToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>
