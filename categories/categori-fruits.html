@@ -131,7 +131,7 @@
         let selectedWord = getRandomWord();
 
         function getRandomWord() {
-            const words = ["ALMA", "BANAN", "ÇİYƏLƏK", "PORTAĞAL", "GİLAS", "ALBALI", "ƏNCİR", "ALÇA", "GAVALI", "HEYVA", "NAR", "BÖYÜRTİKAN", "ŞƏFTƏLİ", "ƏRİK", "QARPIZ", "YEMİŞ", "LİMON", "ANANAS", "KİWİ", "ÜZÜM"];
+            const words = ["ALMA", "BANAN", "ÇİYƏLƏK", "PORTAĞAL", "GİLAS", "ALBALI", "ƏNCİR", "ALÇA", "GAVALI", "HEYVA", "NAR", "BÖYÜRTİKAN", "ŞƏFTƏLİ", "ƏRİK", "QARPIZ", "YEMİŞ", "LİMON", "ANANAS", "KİVİ", "ÜZÜM"];
             return words[Math.floor(Math.random() * words.length)];
         }
 
@@ -258,6 +258,7 @@
 
                 // Harf düğmesini devre dışı bırak
                 button.disabled = true;
+                button.style.boxShadow = 'none';
             });
         });
     </script>
