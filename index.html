@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hangman.css">
+    <title>Hangman Game</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hangman Game</h1>
+        <div class="menu">
+            <h2>Language options</h2>
+            <select id="language-select" class="language-select">
+                <option value="none">Select Language</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="English">English</option>
+                <option value="Russia">Russia</option>
+                <option value="Turkey">Turkey</option>
+            </select>
+            <div class="flag-container">
+                <img id="selected-flag" src="" alt="Select Flag">
+            </div>
+            <button class="start-button" onclick="goToSelectedPage()">Let's Go</button>
+        </div>
+    </div>
+    <script>
+        const languageSelect = document.getElementById('language-select');
+        const selectedFlag = document.getElementById('selected-flag');
+
+        languageSelect.addEventListener('change', () => {
+            const selectedLanguage = languageSelect.value;
+            selectedFlag.src = `images/Flag_of_${selectedLanguage}.png`;
+        });
+
+        function goToSelectedPage() {
+            const selectedLanguage = languageSelect.value;
+            if (selectedLanguage === 'Azerbaijan') {
+                window.location.href = '../Home/Aze.html';
+            } else if (selectedLanguage === 'English') {
+                window.location.href = '../Home/Eng.html';
+            } else if (selectedLanguage === 'Russia') {
+                window.location.href = '../Home/Ru.html';
+            } else if (selectedLanguage === 'Turkey') {
+                window.location.href = '../Home/Tr.html';
+            }
+            languageSelect.selectedIndex = 0;
+        }
+
+    </script>
+</body>
+
+</html>
