@@ -58,7 +58,7 @@ body {
 #wrong-letters {
     position: absolute;
     top: 30px;
-    right: 30px;
+    right: 10px;
 }
 
 #wrong-letters span {

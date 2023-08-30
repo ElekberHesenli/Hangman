@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Category Page</title>
+</head>
+
+<body>
+    <h1>Choose the category and let's start the game</h1>
+    <main>
+        <div class="container">
+            <div class="box" onclick="goToPage('../Eng-categories/categori-animals.html')">
+                Animals
+                <img src="../images/animals.jpg" alt="">
+            </div>
+            <div class="box" onclick="goToPage('../Eng-categories/categori-fruits.html')">
+                Fruits
+                <img src="../images/fruits.jpg" alt="">
+            </div>
+            <div class="box" onclick="goToPage('../Eng-categories/categori-jobs.html')">
+                Jobs
+                <img src="../images/jobs.jpg" alt="">
+            </div>
+            <div class="box" onclick="goToPage('../Eng-categories/categori-things.html')">
+                Things
+                <img src="../images/things.jpg" alt="">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function goToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

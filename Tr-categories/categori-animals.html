@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,7 +16,7 @@
     <button id="leftbutton"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
     <button id="homebutton"><i class="fa-solid fa-house-chimney fa-2xl" style="color: #000000;"></i></button>
     <h1>Adam Asmaca</h1>
-    <p>Gizli sözü tapmaq üçün hərf daxil edin.</p>
+    <p>Gizli kelimeyi bulmak için harf girin.</p>
 
     <div class="container">
         <svg height="250" width="250" class="grafik">
@@ -60,15 +60,15 @@
         </div>
     </div>
     <div id="categori">
-        <h2 class="categoriname">Kateqoriya:Heyvanlar</h2>
+        <h2 class="categoriname">Kategori: Hayvanlar</h2>
         <div id="score">
-            Score: <span id="score-value">0</span>
+            Skor: <span id="score-value">0</span>
         </div>
     </div>
     <div id="popup-container">
         <div class="popup">
-            <h2 id="success-message">Qazandız,Təbriklər</h2>
-            <button id="play-again">Təkrar oyna</button>
+            <h2 id="success-message">Kazandınız, Tebrikler</h2>
+            <button id="play-again">Tekrar Oyna</button>
         </div>
     </div>
     <div id="letter-buttons">
@@ -136,7 +136,7 @@
         let selectedWord = getRandomWord();
 
         function getRandomWord() {
-            const words = ["AYI", "İT", "PİŞİK", "DOVŞAN", "TOYUQ", "BALİNA", "ZEBRA", "QARĞA", "TİMSAH", "BALIQ", "ZÜRAFƏ", "QURD", "SOXULCAN", "AT", "CANAVAR", "SƏRÇƏ", "MEYMUN", "PƏLƏNG", "SİÇAN", "CÜCƏ", "TISBAĞA"];
+            const words = ["AYI", "KÖPEK", "KEDİ", "TAVŞAN", "TAVUK", "BALİNA", "ZEBRA", "KARGA", "TİMSAH", "BALIK", "ZÜRAFA", "KURT", "SOLUCAN", "AT", "CANAVAR", "SERÇE", "MAYMUN", "KAPLAN", "FARE", "CİVCİV", "KAPLUMBAĞA"];
             return words[Math.floor(Math.random() * words.length)];
         }
 
@@ -152,7 +152,7 @@
             const w = word_el.innerText.replace(/\n/g, '');
             if (w === selectedWord) {
                 popupcontainer.style.display = 'flex';
-                message_el.innerText = 'Qazandız,Təbriklər.';
+                message_el.innerText = 'Kazandınız, Tebrikler';
                 popup.style.backgroundColor = 'green';
                 increaseScore();
             }
@@ -160,7 +160,7 @@
 
         function updateWrongLetters() {
             wrongLetters_el.innerHTML = `
-        ${wrongLetters.length > 0 ? '<h3>Səhv daxil edilmiş hərflər</h3>' : ''}
+        ${wrongLetters.length > 0 ? '<h3>Yanlış girilen harfler</h3>' : ''}
         ${wrongLetters.map(letter => `<span>${letter}<span>`)}
     `;
 
@@ -177,8 +177,8 @@
             if (wrongLetters.length === items.length) {
                 popupcontainer.style.display = 'flex';
 
-                message_el.innerText = `Təəssüf ki məğlub oldunuz 
-                Doğru cavab:${selectedWord}`;
+                message_el.innerText = `Maalesef kaybettin 
+                Doğru cevap:${selectedWord}`;
                 popup.style.backgroundColor = 'red';
                 reduceScore()
             }
