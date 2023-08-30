@@ -12,7 +12,22 @@ body {
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+#leftbutton {
+    position: absolute;
+    left: 0%;
+    top: 2%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+#homebutton {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 .container {
     padding: 20px 20px;
     height: 450px;
