@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <button id="leftbutton"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
-    <button id="homebutton"><i class="fa-solid fa-house-chimney fa-2xl" style="color: #000000;"></i></button>
+    <button id="leftbutton" onclick="goToPage('../Home/Ru.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
+    <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
     <h1>Виселица</h1>
     <p>Введите букву, чтобы угадать скрытое слово.</p>
 
@@ -266,6 +266,9 @@
                 button.style.boxShadow = 'none';
             });
         });
+        function goToPage(url) {
+                window.location.href = url;
+            }
     </script>
 </body>
 

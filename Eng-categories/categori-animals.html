@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <button id="leftbutton"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
-    <button id="homebutton"><i class="fa-solid fa-house-chimney fa-2xl" style="color: #000000;"></i></button>
+    <button id="leftbutton" onclick="goToPage('../Home/Eng.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
+    <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
     <h1>Hangman Game</h1>
     <p>Enter a letter to guess the hidden word.</p>
 
@@ -260,6 +260,9 @@
                 button.style.boxShadow = 'none';
             });
         });
+        function goToPage(url) {
+                window.location.href = url;
+            }
     </script>
 </body>
 
