@@ -13,6 +13,24 @@ main {
     align-items: center;
 }
 
+#leftbutton {
+    position: absolute;
+    left: 0%;
+    top: 2%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#homebutton {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -33,6 +51,7 @@ main {
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
+
 .box img {
     object-fit: cover;
     width: 190px;
