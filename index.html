@@ -10,6 +10,9 @@
 
 <body>
     <div class="container">
+        <audio id="muzik" autoplay loop>
+            <source src="Game Sounds/Make It Loud Edit01.mp3" type="audio/mpeg">
+        </audio>
         <h1>Hangman Game</h1>
         <div class="menu">
             <h2>Language options</h2>
@@ -21,7 +24,7 @@
                 <option value="Turkey">Turkey</option>
             </select>
             <div class="flag-container">
-                <img id="selected-flag" src="" alt="Select Flag">
+                <img id="selected-flag" src="" alt="">
             </div>
             <button class="start-button" onclick="goToSelectedPage()">Let's Go</button>
         </div>
@@ -29,7 +32,7 @@
     <script>
         const languageSelect = document.getElementById('language-select');
         const selectedFlag = document.getElementById('selected-flag');
-
+        const muzik = document.getElementById("muzik");
         languageSelect.addEventListener('change', () => {
             const selectedLanguage = languageSelect.value;
             selectedFlag.src = `images/Flag_of_${selectedLanguage}.png`;
@@ -48,7 +51,12 @@
             }
             languageSelect.selectedIndex = 0;
         }
-
+        
+            window.onload = function () {
+                    if (muzik.canPlayType && muzik.paused) {
+                        muzik.play();
+                    }
+                };
     </script>
 </body>
 
