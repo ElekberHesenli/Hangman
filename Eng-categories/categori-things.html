@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <audio id="failmuzik">
+        <source src="../Game Sounds/negative_beeps-6008.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successmuzik">
+        <source src="../Game Sounds/success-fanfare-trumpets-6185.mp3" type="audio/mpeg">
+    </audio>
     <button id="leftbutton" onclick="goToPage('../Home/Eng.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
     <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
     <h1>Hangman Game</h1>
@@ -146,6 +152,7 @@
             if (w === selectedWord) {
                 popupcontainer.style.display = 'flex';
                 message_el.innerText = 'Congratulations, You Won!';
+                successmuzik.play();
                 popup.style.backgroundColor = 'green';
                 increaseScore();
             }
@@ -172,6 +179,7 @@
 
                 message_el.innerText = `Unfortunately, you lost 
                 Correct answer:${selectedWord}`;
+                failmuzik.play();
                 popup.style.backgroundColor = 'red';
                 reduceScore()
             }
