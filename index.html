@@ -52,11 +52,13 @@
             languageSelect.selectedIndex = 0;
         }
         
-            window.onload = function () {
-                    if (muzik.canPlayType && muzik.paused) {
+            // İstifadəçi klik etdikdə səsə başlayın
+                document.addEventListener("click", function () {
+                    const muzik = document.getElementById("muzik");
+                    if (muzik.canPlayType) {
                         muzik.play();
                     }
-                };
+                });
     </script>
 </body>
 
