@@ -26,16 +26,18 @@
             <div class="flag-container">
                 <img id="selected-flag" src="" alt="">
             </div>
-            <button class="start-button" onclick="goToSelectedPage()">Let's Go</button>
+            <button id="button" onclick="goToSelectedPage()">Let's Go</button>
         </div>
     </div>
     <script>
         const languageSelect = document.getElementById('language-select');
         const selectedFlag = document.getElementById('selected-flag');
         const muzik = document.getElementById("muzik");
+        const button = document.getElementById("button");
         languageSelect.addEventListener('change', () => {
             const selectedLanguage = languageSelect.value;
             selectedFlag.src = `images/Flag_of_${selectedLanguage}.png`;
+            updateButtonText(selectedLanguage);
         });
 
         function goToSelectedPage() {
@@ -59,6 +61,21 @@
                         muzik.play();
                     }
                 });
+        function updateButtonText(selectedLanguage) {
+                if (selectedLanguage === 'Azerbaijan') {
+                    button.innerHTML = 'Başlayaq';
+                } else if (selectedLanguage === 'English') {
+                    button.innerHTML = 'Let\'s Go';
+                } else if (selectedLanguage === 'Russia') {
+                    button.innerHTML = 'Давай начнем';
+                } else if (selectedLanguage === 'Turkey') {
+                    button.innerHTML = 'Hadi başlayalım';
+                }
+                else {
+                    button.innerHTML = 'Let\'s Go';
+                }
+
+            }
     </script>
 </body>
 
