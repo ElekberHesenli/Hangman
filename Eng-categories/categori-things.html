@@ -19,8 +19,10 @@
     <audio id="successmuzik">
         <source src="../Game Sounds/success-fanfare-trumpets-6185.mp3" type="audio/mpeg">
     </audio>
-    <button id="leftbutton" onclick="goToPage('../Home/Eng.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
-    <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
+    <button id="leftbutton" onclick="goToPage('../Home/Eng.html')"><i class="fa-solid fa-circle-left fa-2xl"
+            style="color: #000000;"></i></button>
+    <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl"
+            style="color: #000000;"></i></button>
     <h1>Hangman Game</h1>
     <p>Enter a letter to guess the hidden word.</p>
 
@@ -118,6 +120,7 @@
         const items = document.querySelectorAll('.item');
         const message = document.getElementById('message');
         const PlayAgainBtn = document.getElementById('play-again');
+        const letterButtons = document.querySelectorAll('.letter-button');
         const score_el = document.getElementById('score-value');
         let score = 0;
 
@@ -129,15 +132,31 @@
             score--;
             score_el.textContent = score;
         }
-
+        const selectedWordsHistory = [];
         const correctLetters = [];
         const wrongLetters = [];
         let selectedWord = getRandomWord();
 
         function getRandomWord() {
             const words = ["PEN", "PAPER", "PHONE", "COMPUTER", "BOOK", "MIRROR", "BAG", "CHAIR", "DOOR", "GOLD", "CAMERA", "IRON", "KEY", "CLOTHES", "POT", "NECKLACE", "EARRING", "TOY", "TELEVISION", "BRICK"];
-            return words[Math.floor(Math.random() * words.length)];
+
+            let randomWord;
+
+            do {
+                randomWord = words[Math.floor(Math.random() * words.length)];
+            } while (selectedWordsHistory.includes(randomWord));
+
+            selectedWordsHistory.push(randomWord);
+
+            if (selectedWordsHistory.length === words.length) {
+                // Eğer tüm kelimeler kullanıldıysa, listedeki seçilen kelimeleri sıfırla
+                selectedWordsHistory.length = 0;
+            }
+
+            return randomWord;
         }
+
+
 
         function displayWord() {
             word_el.innerHTML = `
@@ -241,7 +260,7 @@
 
 
 
-        const letterButtons = document.querySelectorAll('.letter-button');
+
 
         letterButtons.forEach(button => {
             button.addEventListener('click', function () {
@@ -269,8 +288,8 @@
             });
         });
         function goToPage(url) {
-                window.location.href = url;
-            }
+            window.location.href = url;
+        }
     </script>
 </body>
 
