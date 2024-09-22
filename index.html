@@ -5,14 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="hangman.css">
+    <link rel="icon" href="./images/hangman_icon.png">
     <title>Hangman Game</title>
+    <style>
+        /* Full-screen video background */
+        #backgroundVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure the video stays behind content */
+        }
+
+        /* Ensure container and menu are in front of the video */
+        .container {
+            position: relative;
+            z-index: 1; /* Place content in front of the video */
+        }
+
+        .menu {
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent white background for visibility */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        /* Basic styling */
+        h1 {
+            color: black;
+            text-align: center;
+        }
+
+        select, button {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .flag-container img {
+            width: 50px;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <audio id="muzik" autoplay loop>
-            <source src="Game Sounds/Make It Loud Edit01.mp3" type="audio/mpeg">
+            <source src="Game Sounds/background_music.weba" type="audio/mpeg">
         </audio>
+        <!-- Video Background -->
+        <video autoplay muted loop id="backgroundVideo">
+            <source src="./Game Sounds/Snapinsta.app_video_094674F2C7E0ACE901B58346A58B34A6_video_dashinit.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
         <h1>Hangman Game</h1>
         <div class="menu">
             <h2>Language options</h2>
@@ -29,11 +92,13 @@
             <button id="button" onclick="goToSelectedPage()">Let's Go</button>
         </div>
     </div>
+
     <script>
         const languageSelect = document.getElementById('language-select');
         const selectedFlag = document.getElementById('selected-flag');
         const muzik = document.getElementById("muzik");
         const button = document.getElementById("button");
+
         languageSelect.addEventListener('change', () => {
             const selectedLanguage = languageSelect.value;
             selectedFlag.src = `images/Flag_of_${selectedLanguage}.png`;
@@ -53,29 +118,28 @@
             }
             languageSelect.selectedIndex = 0;
         }
-        
-            // İstifadəçi klik etdikdə səsə başlayın
-                document.addEventListener("click", function () {
-                    const muzik = document.getElementById("muzik");
-                    if (muzik.canPlayType) {
-                        muzik.play();
-                    }
-                });
-        function updateButtonText(selectedLanguage) {
-                if (selectedLanguage === 'Azerbaijan') {
-                    button.innerHTML = 'Başlayaq';
-                } else if (selectedLanguage === 'English') {
-                    button.innerHTML = 'Let\'s Go';
-                } else if (selectedLanguage === 'Russia') {
-                    button.innerHTML = 'Давай начнем';
-                } else if (selectedLanguage === 'Turkey') {
-                    button.innerHTML = 'Hadi başlayalım';
-                }
-                else {
-                    button.innerHTML = 'Let\'s Go';
-                }
 
+        // İstifadəçi klik etdikdə səsə başlayın
+        document.addEventListener("click", function () {
+            const muzik = document.getElementById("muzik");
+            if (muzik.canPlayType) {
+                muzik.play();
             }
+        });
+
+        function updateButtonText(selectedLanguage) {
+            if (selectedLanguage === 'Azerbaijan') {
+                button.innerHTML = 'Başlayaq';
+            } else if (selectedLanguage === 'English') {
+                button.innerHTML = 'Let\'s Go';
+            } else if (selectedLanguage === 'Russia') {
+                button.innerHTML = 'Давай начнем';
+            } else if (selectedLanguage === 'Turkey') {
+                button.innerHTML = 'Hadi başlayalım';
+            } else {
+                button.innerHTML = 'Let\'s Go';
+            }
+        }
     </script>
 </body>
 

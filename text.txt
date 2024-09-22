@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hangman.css">
+    <link rel="icon" href="./images/hangman_icon.png">
+    <title>Hangman Game</title>
+</head>
+
+<body>
+    <div class="container">
+        <audio id="muzik" autoplay loop>
+            <source src="Game Sounds/Make It Loud Edit01.mp3" type="audio/mpeg">
+        </audio>
+        <h1>Hangman Game</h1>
+        <div class="menu">
+            <h2>Language options</h2>
+            <select id="language-select" class="language-select">
+                <option value="none">Select Language</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="English">English</option>
+                <option value="Russia">Russia</option>
+                <option value="Turkey">Turkey</option>
+            </select>
+            <div class="flag-container">
+                <img id="selected-flag" src="" alt="">
+            </div>
+            <button id="button" onclick="goToSelectedPage()">Let's Go</button>
+        </div>
+    </div>
+    <script>
+        const languageSelect = document.getElementById('language-select');
+        const selectedFlag = document.getElementById('selected-flag');
+        const muzik = document.getElementById("muzik");
+        const button = document.getElementById("button");
+        languageSelect.addEventListener('change', () => {
+            const selectedLanguage = languageSelect.value;
+            selectedFlag.src = images/Flag_of_${selectedLanguage}.png;
+            updateButtonText(selectedLanguage);
+        });
+
+        function goToSelectedPage() {
+            const selectedLanguage = languageSelect.value;
+            if (selectedLanguage === 'Azerbaijan') {
+                window.location.href = '../Home/Aze.html';
+            } else if (selectedLanguage === 'English') {
+                window.location.href = '../Home/Eng.html';
+            } else if (selectedLanguage === 'Russia') {
+                window.location.href = '../Home/Ru.html';
+            } else if (selectedLanguage === 'Turkey') {
+                window.location.href = '../Home/Tr.html';
+            }
+            languageSelect.selectedIndex = 0;
+        }
+
+        // İstifadəçi klik etdikdə səsə başlayın
+        document.addEventListener("click", function () {
+            const muzik = document.getElementById("muzik");
+            if (muzik.canPlayType) {
+                muzik.play();
+            }
+        });
+        function updateButtonText(selectedLanguage) {
+            if (selectedLanguage === 'Azerbaijan') {
+                button.innerHTML = 'Başlayaq';
+            } else if (selectedLanguage === 'English') {
+                button.innerHTML = 'Let\'s Go';
+            } else if (selectedLanguage === 'Russia') {
+                button.innerHTML = 'Давай начнем';
+            } else if (selectedLanguage === 'Turkey') {
+                button.innerHTML = 'Hadi başlayalım';
+            }
+            else {
+                button.innerHTML = 'Let\'s Go';
+            }
+
+        }
+    </script>
+</body>
+
+</html>
