@@ -146,7 +146,7 @@
 
         function getRandomWord() {
 
-            const words = ["QƏHBƏ","MÜƏLLİM", "HƏKİM", "MÜHƏNDİS", "İNŞAATÇI", "JURNALİST", "KURYER", "DİZAYNER", "POLİS", "XİDMƏTÇİ", "MUSİQİÇİ", "TAKSİÇİ", "MENECER", "BAYTAR", "AŞPAZ", "PİLOT", "ARXEOLOQ", "PİSXOLOQ", "TƏRCÜMƏÇİ", "PROQRAMÇI", "RƏQQAS",];
+            const words = ["QƏHvƏ","MÜƏLLİM", "HƏKİM", "MÜHƏNDİS", "İNŞAATÇI", "JURNALİST", "KURYER", "DİZAYNER", "POLİS", "XİDMƏTÇİ", "MUSİQİÇİ", "TAKSİÇİ", "MENECER", "BAYTAR", "AŞPAZ", "PİLOT", "ARXEOLOQ", "PİSXOLOQ", "TƏRCÜMƏÇİ", "PROQRAMÇI", "RƏQQAS",];
             return words[Math.floor(Math.random() * words.length)];
 
             let randomWord;
@@ -158,7 +158,6 @@
             selectedWordsHistory.push(randomWord);
 
             if (selectedWordsHistory.length === words.length) {
-                // Eğer tüm kelimeler kullanıldıysa, listedeki seçilen kelimeleri sıfırla
                 selectedWordsHistory.length = 0;
             }
 

@@ -1,61 +1,303 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    min-height: 90vh;
-    background-color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+    background-size: 100px 100px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.6s ease-out;
+    position: relative;
+    z-index: 1;
 }
 
 main {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.7s ease-out 0.2s both;
+}
+
+#leftbutton, #homebutton {
+    position: fixed;
+    top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
 }
 
 #leftbutton {
-    position: absolute;
-    left: 0%;
-    top: 2%;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    left: 20px;
 }
 
 #homebutton {
-    position: absolute;
-    left: 2%;
-    top: 2%;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    left: 80px;
+}
+
+#leftbutton:hover, #homebutton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#leftbutton i, #homebutton i {
+    color: #ffffff !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 30px;
+    max-width: 900px;
+    padding: 20px;
 }
 
 .box {
-    width: 200px;
-    height: 200px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    width: 280px;
+    height: 320px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #2d3748;
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    animation: cardFadeIn 0.6s ease-out backwards;
+}
+
+.box:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.box:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.box:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.box:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.box:hover::before {
+    opacity: 1;
 }
 
 .box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.8);
+}
+
+.box:active {
+    transform: translateY(-10px) scale(1.02);
 }
 
 .box img {
+    width: 100%;
+    height: 220px;
     object-fit: cover;
-    width: 190px;
-    height: 170px;
-    background-position: center;
-    background-size: cover;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.4s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.box:hover img {
+    transform: scale(1.1);
+}
+
+.category-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+    z-index: 2;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #667eea;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 22px 22px;
+    transition: all 0.3s ease;
+}
+
+.box:hover .category-name {
+    background: linear-gradient(to top, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.9));
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .container {
+        gap: 25px;
+    }
+    
+    .box {
+        width: 240px;
+        height: 280px;
+    }
+    
+    .box img {
+        height: 180px;
+    }
+    
+    h1 {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .box {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    
+    #leftbutton, #homebutton {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+    }
+    
+    #leftbutton {
+        left: 15px;
+    }
+    
+    #homebutton {
+        left: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    
+    .box {
+        height: 260px;
+    }
+    
+    .box img {
+        height: 160px;
+    }
+    
+    body {
+        padding: 15px;
+    }
 }

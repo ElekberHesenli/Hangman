@@ -14,25 +14,25 @@
 
 <body>
     <h1>Kategoriyi seçin ve oyuna başlayalım</h1>
+    <button id="leftbutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
+    <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
     <main>
-        <button id="leftbutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
-        <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
         <div class="container">
             <div class="box" onclick="goToPage('../Tr-categories/categori-animals.html')">
-                Hayvanlar
-                <img src="../images/animals.jpg" alt="">
+                <img src="../images/animals.jpg" alt="Hayvanlar">
+                <span class="category-name">Hayvanlar</span>
             </div>
             <div class="box" onclick="goToPage('../Tr-categories/categori-fruits.html')">
-                Meyveler
-                <img src="../images/fruits.jpg" alt="">
+                <img src="../images/fruits.jpg" alt="Meyveler">
+                <span class="category-name">Meyveler</span>
             </div>
             <div class="box" onclick="goToPage('../Tr-categories/categori-jobs.html')">
-                Meslekler
-                <img src="../images/jobs.jpg" alt="">
+                <img src="../images/jobs.jpg" alt="Meslekler">
+                <span class="category-name">Meslekler</span>
             </div>
             <div class="box" onclick="goToPage('../Tr-categories/categori-things.html')">
-                Eşyalar
-                <img src="../images/things.jpg" alt="">
+                <img src="../images/things.jpg" alt="Eşyalar">
+                <span class="category-name">Eşyalar</span>
             </div>
         </div>
     </main>

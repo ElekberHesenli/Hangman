@@ -14,25 +14,25 @@
 
 <body>
     <h1>Выберите категорию и начнем игру</h1>
+    <button id="leftbutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
+    <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
     <main>
-        <button id="leftbutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-circle-left fa-2xl" style="color: #000000;"></i></button>
-        <button id="homebutton" onclick="goToPage('../index.html')"><i class="fa-solid fa-house fa-2xl" style="color: #000000;"></i></button>
         <div class="container">
             <div class="box" onclick="goToPage('../Ru-categories/categori-animals.html')">
-                Животные
-                <img src="../images/animals.jpg" alt="">
+                <img src="../images/animals.jpg" alt="Животные">
+                <span class="category-name">Животные</span>
             </div>
             <div class="box" onclick="goToPage('../Ru-categories/categori-fruits.html')">
-                Фрукты
-                <img src="../images/fruits.jpg" alt="">
+                <img src="../images/fruits.jpg" alt="Фрукты">
+                <span class="category-name">Фрукты</span>
             </div>
             <div class="box" onclick="goToPage('../Ru-categories/categori-jobs.html')">
-                Вакансии
-                <img src="../images/jobs.jpg" alt="">
+                <img src="../images/jobs.jpg" alt="Вакансии">
+                <span class="category-name">Вакансии</span>
             </div>
             <div class="box" onclick="goToPage('../Ru-categories/categori-things.html')">
-                Вещи
-                <img src="../images/things.jpg" alt="">
+                <img src="../images/things.jpg" alt="Вещи">
+                <span class="category-name">Вещи</span>
             </div>
         </div>
     </main>
