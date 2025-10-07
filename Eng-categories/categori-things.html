@@ -179,9 +179,12 @@
         }
 
         function updateWrongLetters() {
+            // Filter out only letters (A-Z) and remove any unwanted characters
+            const filteredLetters = wrongLetters.filter(letter => /^[A-Z]$/i.test(letter));
+            
             wrongLetters_el.innerHTML = `
-        ${wrongLetters.length > 0 ? '<h3>Incorrectly entered letters</h3>' : ''}
-        ${wrongLetters.map(letter => `<span>${letter}<span>`)}
+        ${filteredLetters.length > 0 ? '<h3>Incorrectly entered letters</h3>' : ''}
+        ${filteredLetters.map(letter => `<span>${letter}</span>`).join('')}
     `;
 
             items.forEach((item, index) => {

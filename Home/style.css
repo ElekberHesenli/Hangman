@@ -15,7 +15,7 @@ body {
     justify-content: center;
     padding: 20px;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 body::before {
@@ -35,7 +35,7 @@ h1 {
     color: white;
     font-size: 2.5em;
     font-weight: 700;
-    margin-bottom: 50px;
+    margin: 50px 0px;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 0.6s ease-out;
     position: relative;
@@ -49,6 +49,7 @@ main {
     position: relative;
     z-index: 1;
     animation: fadeInUp 0.7s ease-out 0.2s both;
+    width: 100%;
 }
 
 #leftbutton, #homebutton {
@@ -93,6 +94,8 @@ main {
     gap: 30px;
     max-width: 900px;
     padding: 20px;
+    width: 100%;
+    justify-items: center;
 }
 
 .box {
@@ -252,15 +255,30 @@ main {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
     .container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 12px;
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .box {
         width: 100%;
-        max-width: 320px;
+        max-width: 340px;
+        height: 280px;
+        margin: 0 auto 12px auto;
+        transition: all 0.3s ease;
+    }
+    
+    .box img {
+        height: 180px;
+    }
+    
+    .category-name {
+        padding: 20px;
+        font-size: 1.2em;
     }
     
     h1 {
@@ -281,6 +299,15 @@ main {
     #homebutton {
         left: 70px;
     }
+    
+    main {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    body {
+        padding: 15px 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -289,15 +316,27 @@ main {
         margin-bottom: 25px;
     }
     
+    .container {
+        gap: 10px;
+        padding: 10px;
+    }
+    
     .box {
-        height: 260px;
+        height: 240px;
+        max-width: 300px;
+        margin-bottom: 10px;
     }
     
     .box img {
-        height: 160px;
+        height: 150px;
+    }
+    
+    .category-name {
+        padding: 15px;
+        font-size: 1.1em;
     }
     
     body {
-        padding: 15px;
+        padding: 10px;
     }
 }

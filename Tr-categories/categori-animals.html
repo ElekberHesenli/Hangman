@@ -182,9 +182,12 @@
         }
 
         function updateWrongLetters() {
+            // Filter out only letters (including Turkish special characters) and remove any unwanted characters
+            const filteredLetters = wrongLetters.filter(letter => /^[A-ZÇĞİÖŞÜ]$/i.test(letter));
+            
             wrongLetters_el.innerHTML = `
-        ${wrongLetters.length > 0 ? '<h3>Yanlış girilen harfler</h3>' : ''}
-        ${wrongLetters.map(letter => `<span>${letter}<span>`)}
+        ${filteredLetters.length > 0 ? '<h3>Yanlış girilen harfler</h3>' : ''}
+        ${filteredLetters.map(letter => `<span>${letter}</span>`).join('')}
     `;
 
             items.forEach((item, index) => {

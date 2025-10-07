@@ -40,12 +40,14 @@ h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
     font-weight: 700;
+    order: -3; /* Title comes first in mobile view */
 }
 
 p {
     font-size: 1.1em;
     margin-bottom: 30px;
     opacity: 0.95;
+    order: -3; /* Subtitle also at top */
 }
 
 #leftbutton, #homebutton {
@@ -165,22 +167,46 @@ p {
     border-radius: 15px;
     border: 2px solid rgba(255, 107, 107, 0.3);
     animation: shake 0.5s ease;
+    max-width: 280px;
+    min-width: 200px;
 }
 
 #wrong-letters h3 {
     color: #e74c3c;
     font-size: 0.9em;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
     font-weight: 600;
 }
 
 #wrong-letters span {
-    color: #e74c3c;
+    color: #d23a3a;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.1em;
-    margin: 0 3px;
+    font-weight: bold;
+    font-size: 17px;
+    display: inline-block;
+    margin: 0 3px 6px 0;
+    width: calc((100% - 42px) / 5);
+    max-width: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Most recently added wrong letter (last one) should be larger */
+#wrong-letters span:last-of-type {
+    color: #ff0000;
+    font-size: 21px;
+    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Ensure 6 letters per line by forcing line breaks */
+#wrong-letters span:nth-child(8n),
+#wrong-letters span:nth-child(9n),
+#wrong-letters span:nth-child(10n),
+#wrong-letters span:nth-child(11n),
+#wrong-letters span:nth-child(12n),
+#wrong-letters span:nth-child(13n) {
+    margin-right: 0;
 }
 
 #popup-container {
@@ -207,6 +233,19 @@ p {
     animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     min-width: 300px;
     color: white;
+    transition: background 0.3s ease;
+}
+
+/* Red background for loss */
+.popup[style*="background-color: red"],
+.popup[style*="background-color: rgb(255, 0, 0)"] {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+/* Green background for win (explicit) */
+.popup[style*="background-color: green"],
+.popup[style*="background-color: rgb(0, 128, 0)"] {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
 }
 
 .popup h2 {
@@ -446,10 +485,30 @@ p {
         top: auto;
         margin: 20px auto;
         max-width: 300px;
+        order: -2; /* Move category above container in flex layout */
     }
     
     body {
         padding: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .container {
+        order: -1; /* Container comes after category but before keyboard */
+    }
+    
+    #letter-buttons {
+        order: 1; /* Keyboard stays at bottom */
+    }
+    
+    /* Move wrong letters above hangman on tablets */
+    #wrong-letters {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0 auto 20px auto;
+        max-width: 100%;
     }
 }
 
@@ -474,6 +533,21 @@ p {
     
     h1 {
         font-size: 2em;
+    }
+    
+    /* Wrong letters fully responsive on mobile */
+    #wrong-letters {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0 auto 20px auto;
+        max-width: 100%;
+        width: 90%;
+    }
+    
+    #wrong-letters span {
+        width: calc((100% - 35px) / 6);
+        margin: 0 5px 5px 0;
     }
 }
 
@@ -513,6 +587,21 @@ p {
     #homebutton {
         left: 70px;
     }
+    
+    /* Ensure wrong letters stack properly on smaller screens */
+    #wrong-letters {
+        padding: 12px 15px;
+    }
+    
+    #wrong-letters span {
+        font-size: 16px;
+        width: calc((100% - 30px) / 6);
+        margin: 0 4px 4px 0;
+    }
+    
+    #wrong-letters span:last-of-type {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -534,5 +623,27 @@ p {
     
     .popup h2 {
         font-size: 1.5em;
+    }
+    
+    /* Mobile: Wrong letters above hangman with proper stacking */
+    #wrong-letters {
+        width: 95%;
+        padding: 10px 12px;
+    }
+    
+    #wrong-letters span {
+        font-size: 15px;
+        width: calc((100% - 25px) / 6);
+        margin: 0 3px 3px 0;
+    }
+    
+    #wrong-letters span:last-of-type {
+        font-size: 19px;
+    }
+    
+    .letter-button {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
     }
 }
